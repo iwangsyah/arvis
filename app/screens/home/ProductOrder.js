@@ -1,28 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {
-  ImageBackground,
   StyleSheet,
-  Dimensions,
-  FlatList,
   Image,
   Text,
   View,
-  Platform,
   ScrollView,
-  SafeAreaView,
   TouchableOpacity
 } from 'react-native';
 import accounting from 'accounting';
 import {
-  Background,
   NavBar,
-  Help,
-  AsSeeOn,
-  Connects
 } from '../../components';
-import {CommonStyle, LoginStyle, Theme} from '../../styles';
-import {ApiService} from '../../services';
-import Images from '../../assets/images';
+import {CommonStyle, Theme} from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +20,8 @@ const styles = StyleSheet.create({
   },
   boxContent: {
     backgroundColor: Theme.bgPrimaryColor,
-    marginBottom: 8,
+    marginHorizontal: 20,
+    marginVertical: 8,
     borderRadius: 8,
     padding: 16,
   },
@@ -71,7 +61,7 @@ function ProductOrder(props) {
   return (
     <View style={styles.container}>
       <NavBar title="Order Confirmation" onBack={() => props.navigation.pop()} />
-      <ScrollView style={{flex: 1, padding: 20}}>
+      <ScrollView style={{flex: 1}}>
         <View style={[styles.row, styles.boxContent, CommonStyle.shadow]}>
           <Text>Total Ordered items</Text>
           <Text>{item.count}</Text>
@@ -90,7 +80,7 @@ function ProductOrder(props) {
             <Text style={styles.txtTotal}>{accounting.formatMoney(item.price * item.count, "Rp ", 0, '.')}</Text>
           </View>
         </View>
-        <Text style={{marginVertical: 16}}>Ordered Items</Text>
+        <Text style={{margin: 20}}>Ordered Items</Text>
         <View style={[styles.row, styles.boxContent, CommonStyle.shadow]}>
           <View style={styles.row}>
             <Image

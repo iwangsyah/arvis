@@ -1,27 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {
-  ImageBackground,
   StyleSheet,
-  Dimensions,
-  FlatList,
   Image,
   Text,
   View,
   Platform,
   ScrollView,
-  SafeAreaView,
   TouchableOpacity
 } from 'react-native';
 import accounting from 'accounting';
-import {
-  Background,
-  NavBar,
-  Help,
-  AsSeeOn,
-  Connects
-} from '../../components';
-import {CommonStyle, LoginStyle, Theme} from '../../styles';
-import {ApiService} from '../../services';
+import {CommonStyle, Theme} from '../../styles';
 import Images from '../../assets/images';
 import {Navigation} from '../../configs';
 

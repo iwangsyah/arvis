@@ -121,37 +121,36 @@ function Login(props) {
   };
 
   const _onLogin = () => {
-    // let dataUser;
-    // if (email && password) {
-    //   const dataExist = _.find(registeredUsers.users, (item) => {
-    //     dataUser = item;
-    //     return item.email === email;
-    //   })
-    //   if (dataExist && dataExist.password == password) {
-    //     const index = _.findIndex(loginStory.users, (item) => (item.email == email));
-    //     let count;
-    //     if (index < 0) {
-    //       count = 1
-    //       loginStory.users.push({ email, count });
-    //     } else {
-    //       count = loginStory.users[index].count + 1
-    //     }
-    //     _setUserLogin(dataUser)
-    //     _setLoginStory(loginStory.users);
-    //     alert(`You have logged in using\nthe username : ${email}\n${count} times`);
-    //     navigation.navigate(Navigation.APP)
-    //   } else if (dataExist) {
-    //     setPassword('');
-    //     alert('Wrong password');
-    //   } else {
-    //     setEmail('');
-    //     setPassword('');
-    //     alert('Email has not been registered');
-    //   }
-    // } else {
-    //   alert('All data must be filled in')
-    // }
-    props.navigation.navigate(Navigation.HOME)
+    let dataUser;
+    if (email && password) {
+      const dataExist = _.find(registeredUsers.users, (item) => {
+        dataUser = item;
+        return item.email === email;
+      })
+      if (dataExist && dataExist.password == password) {
+        const index = _.findIndex(loginStory.users, (item) => (item.email == email));
+        let count;
+        if (index < 0) {
+          count = 1
+          loginStory.users.push({email, count});
+        } else {
+          count = loginStory.users[index].count + 1
+        }
+        _setUserLogin(dataUser)
+        _setLoginStory(loginStory.users);
+        alert(`You have logged in using\nthe username : ${email}\n${count} times`);
+        navigation.navigate(Navigation.APP)
+      } else if (dataExist) {
+        setPassword('');
+        alert('Wrong password');
+      } else {
+        setEmail('');
+        setPassword('');
+        alert('Email has not been registered');
+      }
+    } else {
+      alert('All data must be filled in')
+    }
   }
 
   return (

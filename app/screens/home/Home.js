@@ -1,26 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {
-  ImageBackground,
-  ScrollView,
   StyleSheet,
-  Dimensions,
   FlatList,
   Image,
   Text,
   View,
   SafeAreaView,
-  Touchable,
-  ProgressViewIOSComponent
 } from 'react-native';
 import accounting from 'accounting';
-import {
-  Background,
-  NavBar,
-  Help,
-  AsSeeOn,
-  Connects
-} from '../../components';
-import {CommonStyle, LoginStyle, Theme} from '../../styles';
+import {CommonStyle, Theme} from '../../styles';
 import {ApiService} from '../../services';
 import Images from '../../assets/images';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -47,16 +35,22 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain'
   },
-  title: {
-    fontSize: 22,
-    fontFamily: Theme.fontMedium,
-    color: Theme.txtSecondaryColor,
-    lineHeight: 32
+  boxItem: {
+    flexDirection: 'row',
+    padding: 16,
+    marginVertical: 8,
+    backgroundColor: '#fff',
+    borderRadius: 8
+  },
+  image: {
+    width: 80,
+    height: 80,
+    marginRight: 16,
+    borderRadius: 8
   },
   description: {
-    color: Theme.txtSecondaryColor,
-    textAlign: 'left',
-    marginVertical: 16,
+    marginVertical: 8,
+    color: Theme.txtTeritaryColor
   }
 })
 
@@ -108,11 +102,11 @@ function Home(props) {
   )
 
   const renderItem = ({item}) => (
-    <TouchableOpacity style={[{flexDirection: 'row', padding: 16, marginVertical: 8, backgroundColor: '#fff', borderRadius: 8}, CommonStyle.shadow]} onPress={() => props.navigation.navigate(Navigation.PRODUCTDETAIL, {item})}>
-      <Image source={{uri: item.imageUrl}} style={{width: 80, height: 80, marginRight: 16, borderRadius: 8}} />
+    <TouchableOpacity style={[styles.boxItem, CommonStyle.shadow]} onPress={() => props.navigation.navigate(Navigation.PRODUCTDETAIL, {item})}>
+      <Image source={{uri: item.imageUrl}} style={styles.image} />
       <View style={{flex: 1, justifyContent: 'space-between'}}>
         <Text style={{fontSize: 18}}>{item.name}</Text>
-        <Text style={{fontSize: 14, marginVertical: 8, color: Theme.txtTeritaryColor}}>{item.description}</Text>
+        <Text style={styles.description}>{item.description}</Text>
         <Text style={{fontSize: 16}}>{accounting.formatMoney(item.price, "Rp ", 0, '.')}</Text>
       </View>
     </TouchableOpacity >

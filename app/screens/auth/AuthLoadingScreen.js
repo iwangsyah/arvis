@@ -11,12 +11,14 @@ import {useSelector} from 'react-redux';
 import _ from 'lodash';
 import Images from '../../assets/images';
 import {Navigation} from '../../configs';
+import {Theme} from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Theme.bgPrimaryColor
   },
   image: {
     width: '80%',
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
 function AuthLoadingScreen(props) {
   const {navigation} = props;
   const reducer = useSelector(state => state);
-  console.log('kenaa');
+
   useEffect(() => {
     const {user} = reducer.user;
     let route;
