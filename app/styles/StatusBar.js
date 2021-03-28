@@ -1,6 +1,6 @@
-import { StyleSheet, StatusBar, Platform } from 'react-native';
-import { IphoneXHelper } from '../util';
-import { Theme } from '.';
+import {StyleSheet, StatusBar, Platform} from 'react-native';
+import {IphoneXHelper} from '../util';
+import Theme from './Theme';
 
 const StatusBarHeight = IphoneXHelper.getStatusBarHeight();
 
